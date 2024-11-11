@@ -82,31 +82,6 @@ def get_average_word2vec(tokens, model):
     return np.mean(vectors, axis = 0) if vectors else np.zeros(100)
 
 # ----------------------------------------------------------------------------------------------------------------- #
-# Gráfico elbow method
-# ----------------------------------------------------------------------------------------------------------------- #
-
-def plot_elbow_method(X, max_k = 10, title = "Elbow Method"):
-    inertias = []
-    for k in range(1, max_k + 1):
-        kmeans = KMeans(n_clusters = k, random_state = 42)
-        kmeans.fit(X)
-        inertias.append(kmeans.inertia_)
-    
-    plt.figure(figsize = (16, 5))
-    plt.plot(range(1, max_k + 1), inertias, marker = 'o')
-    plt.xlabel("Number of Clusters (k)")
-    plt.ylabel("Inertia")
-    plt.title(title)
-
-    # Configura o range do eixo y
-    plt.ylim(min(inertias) - 1000, max(inertias) + 1000)
-
-    # Configura o eixo x para ir de 1 em 1
-    plt.xticks(range(1, max_k + 1, 1))
-
-    plt.show()
-
-# ----------------------------------------------------------------------------------------------------------------- #
 # Gráfico Elbow Method
 # ----------------------------------------------------------------------------------------------------------------- #
 
